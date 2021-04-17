@@ -1,0 +1,19 @@
+{
+    "name": "hexydec/tokenise",
+    "description": "A program for performing lexical analysis, written in PHP. Designed to supply tokens to a parser in order to analyse the syntax of programming languages.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Will Earp",
+            "email": "will@hexydec.com",
+			"homepage": "https://github.com/hexydec"
+        }
+    ],
+    "require": {
+        "php": ">=7.3"
+    },
+	"autoload": {
+		"classmap": ["src/"]
+	}
+}
