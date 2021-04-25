@@ -49,10 +49,15 @@ class tokenise {
 	/**
 	 * Retrieves the previous token (Note you can only retrieve the immediately preceeding token, you can't keep going backwards as the previous previous token is deleted when the next token is consumed)
 	 *
+	 * @param int $decrement The number of positions to move the pointer back
 	 * @return array The previous token or null if the token no longer exists
 	 */
-	public function prev() : ?array {
-		return $this->pointer ? $this->tokens[--$this->pointer] : null;
+	public function prev(int $decrement = 1) : ?array {
+		$this->pointer -= $decrement;
+		if (isset($this->tokens[$this->pointer])) {
+			return $this->tokens[$this->pointer];
+		}
+		return null;
 	}
 
 	/**
@@ -100,7 +105,7 @@ class tokenise {
 
 						// remove previous tokens to lower memory consumption, also makes the program faster with a smaller array to handle
 						if ($delete) {
-							unset($this->tokens[$pointer - 2]);
+							unset($this->tokens[$pointer - 1]);
 						}
 						return $token;
 					}
