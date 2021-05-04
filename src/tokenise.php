@@ -41,8 +41,8 @@ class tokenise {
 	 * @param string $value The string to be tokenised
 	 */
 	public function __construct(array $tokens, string $value) {
-		$this->pattern = '/\G('.implode(')|(', $tokens).')/u';
-		$this->keys = array_keys($tokens);
+		$this->pattern = '/\G('.\implode(')|(', $tokens).')/u';
+		$this->keys = \array_keys($tokens);
 		$this->value = $value;
 	}
 
@@ -84,8 +84,8 @@ class tokenise {
 			return $this->tokens[++$this->pointer];
 
 		// extract next token
-		} elseif (preg_match($pattern ?? $this->pattern, $this->value, $match, PREG_UNMATCHED_AS_NULL, $this->pos)) {
-			$this->pos += strlen($match[0]);
+		} elseif (\preg_match($pattern ?? $this->pattern, $this->value, $match, PREG_UNMATCHED_AS_NULL, $this->pos)) {
+			$this->pos += \strlen($match[0]);
 
 			// custom pattern
 			if ($pattern) {
