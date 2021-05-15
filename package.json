@@ -1,0 +1,21 @@
+{
+  "name": "tokenise",
+  "version": "0.3.0",
+  "description": "A program for performing lexical analysis, written in PHP",
+  "main": "src/tokenise.php",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "keywords": [
+    "PHP",
+    "tokenizer",
+    "lexer",
+    "lexical"
+  ],
+  "author": "Will Earp <will@hexydec.com>",
+  "repository": "https://github.com/hexydec/tokenise",
+  "license": "MIT"
+}

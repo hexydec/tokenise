@@ -2,6 +2,11 @@
 
 A program for performing lexical analysis, written in PHP. Designed to supply tokens to a parser in order to analyse the syntax of programming languages.
 
+![Licence](https://img.shields.io/badge/Licence-MIT-lightgrey.svg)
+![Status: Beta](https://img.shields.io/badge/Status-Beta-Yellow.svg)
+[![Tests Status](https://github.com/hexydec/tokenise/actions/workflows/tests.yml/badge.svg)](https://github.com/hexydec/tokenise/actions/workflows/tests.yml)
+[![Code Coverage](https://codecov.io/gh/hexydec/tokenise/branch/master/graph/badge.svg)](https://app.codecov.io/gh/hexydec/tokenise)
+
 ## Description
 
 Using an array of regular expressions, tokens are extracted from the input code in sequence and upon request. Previous tokens can also be re-requested, and custom regular expressions can also be used to retrieve the next token.
@@ -24,31 +29,9 @@ while (($token = $obj->next()) !== null) {
 }
 ```
 
-### __construct(array $tokens, string $value)
+## API
 
-Creates a tokenise object
-
-- $tokens - An associative array of regular expressions, where the key is the token type, and the value is the pattern (Note: patterns should not capture any sub-pattern, and should not be delimited)
-- $value - The code to be analysed
-
-### prev()
-
-Get the previous token (if available), only two previous tokens are kept unless the `$delete` argument is set to `false` when the pointer is moved forward using `next()`
-
-Returns an array containing two keys: `type` which cantains the key of the patterns that matched the token, and `value` which contains the captured token value, or null if the token doesn't exist.
-
-### current()
-
-Retrieves the current token.
-
-Returns an array containing two keys: `type` which cantains the key of the patterns that matched the token, and `value` which contains the captured token value, or null if the token doesn't exist.
-
-### next(string $pattern = null, bool $delete = true)
-
-Retrieves the next token:
-
-- $pattern - To capture the next token with a custom regular expression, specify it here
-- $delete - Denotes whether to delete previous tokens, set to `false` to look ahead and retain the ability to look back
+For more detailed usage documentation, [read the API document](docs/api.md).
 
 ## Contributing
 

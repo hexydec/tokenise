@@ -105,7 +105,7 @@ class tokenise {
 
 						// remove previous tokens to lower memory consumption, also makes the program faster with a smaller array to handle
 						if ($delete) {
-							unset($this->tokens[$pointer - 1]);
+							unset($this->tokens[$pointer - 2]);
 						}
 						return $token;
 					}
