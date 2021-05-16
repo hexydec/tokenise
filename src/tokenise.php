@@ -114,4 +114,20 @@ class tokenise {
 		}
 		return null;
 	}
+
+	/**
+	 * Rewind the pointer and rewrite the last token, so you can start parsing again from a previous position. Note the last token will also be rewritten
+	 *
+	 * @param int $chars The number of characters to rewind
+	 * @param string $type If you wish to change the type of the last token, specify the type here
+	 * @return void
+	 */
+	public function rewind(int $chars, ?string $type = null) : void {
+		$this->pos -= $chars;
+		$pointer = $this->pointer;
+		$this->tokens[$pointer]['value'] = mb_substr($this->tokens[$pointer]['value'], 0, $chars * -1);
+		if ($type) {
+			$this->token[$pointer]['type'] = $type;
+		}
+	}
 }
