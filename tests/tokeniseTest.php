@@ -76,7 +76,7 @@ final class tokeniseTest extends \PHPUnit\Framework\TestCase {
 		}
 	}
 
-	public function testCanRewindPointer() {
+	public function testCanGetPreviousTokens() {
 		$obj = new tokenise($this->patterns, $this->input);
 		$i = 0;
 		while (($token = $obj->next(null, false)) !== null) {
@@ -98,11 +98,21 @@ final class tokeniseTest extends \PHPUnit\Framework\TestCase {
 
 	public function testCanUseCustomPatterns() {
 		$obj = new tokenise($this->patterns, $this->input);
-		$i = 0;
 		$obj->next();
 		$obj->next();
 		$obj->next();
 		$token = $obj->next('/[a-z ]++/i');
-		$this->assertEquals('this is used by typists to warm up ', $token[0]);
+		$this->assertEquals('this is used by typists to warm up ', $token[0], 'Custom pattern matched correctly');
+	}
+
+	public function testCanRewindPosition() {
+		$obj = new tokenise($this->patterns, $this->input);
+		$token = $obj->next();
+		$len = \mb_strlen($token['value']);
+		$obj->rewind($len - 1, 'quote');
+		$this->assertEquals(['value' => '"', 'type' => 'quote'], $obj->current(), 'POinter can be rewound and current token rewritten');
+		$this->assertEquals(['value' => 'The', 'type' => 'word'], $obj->next(), 'Next token is correct after pointer rewritten');
+		$this->assertEquals(['value' => ' ', 'type' => 'whitespace'], $obj->next(), 'Next token is correct after pointer rewritten');
+		$this->assertEquals(['value' => 'quick', 'type' => 'word'], $obj->next(), 'Next token is correct after pointer rewritten');
 	}
 }

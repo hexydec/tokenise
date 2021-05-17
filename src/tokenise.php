@@ -127,7 +127,7 @@ class tokenise {
 		$pointer = $this->pointer;
 		$this->tokens[$pointer]['value'] = mb_substr($this->tokens[$pointer]['value'], 0, $chars * -1);
 		if ($type) {
-			$this->token[$pointer]['type'] = $type;
+			$this->tokens[$pointer]['type'] = $type;
 		}
 	}
 }
