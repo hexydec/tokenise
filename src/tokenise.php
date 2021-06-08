@@ -41,8 +41,17 @@ class tokenise {
 	 * @param string $value The string to be tokenised
 	 */
 	public function __construct(array $tokens, string $value) {
+
+		// compile pattern
 		$this->pattern = '/\G('.\implode(')|(', $tokens).')/u';
-		$this->keys = \array_keys($tokens);
+
+		// make the keys a 1 based array
+		$keys = \array_keys($tokens);
+		array_unshift($keys, 'hexydec');
+		unset($keys[0]);
+		$this->keys = $keys;
+
+		// store value
 		$this->value = $value;
 	}
 
@@ -54,10 +63,7 @@ class tokenise {
 	 */
 	public function prev(int $decrement = 1) : ?array {
 		$this->pointer -= $decrement;
-		if (isset($this->tokens[$this->pointer])) {
-			return $this->tokens[$this->pointer];
-		}
-		return null;
+		return $this->tokens[$this->pointer] ?? null;
 	}
 
 	/**
@@ -94,7 +100,6 @@ class tokenise {
 			// go through tokens and find which one matched
 			} else {
 				foreach ($this->keys AS $i => $key) {
-					$i++; // 1 based array
 					if ($match[$i] !== null) {
 
 						// save the token
@@ -105,7 +110,7 @@ class tokenise {
 
 						// remove previous tokens to lower memory consumption, also makes the program faster with a smaller array to handle
 						if ($delete) {
-							unset($this->tokens[$pointer - 1]);
+							unset($this->tokens[$pointer - 2]);
 						}
 						return $token;
 					}
@@ -113,5 +118,21 @@ class tokenise {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Rewind the pointer and rewrite the last token, so you can start parsing again from a previous position. Note the last token will also be rewritten
+	 *
+	 * @param int $chars The number of characters to rewind
+	 * @param string $type If you wish to change the type of the last token, specify the type here
+	 * @return void
+	 */
+	public function rewind(int $chars, ?string $type = null) : void {
+		$this->pos -= $chars;
+		$pointer = $this->pointer;
+		$this->tokens[$pointer]['value'] = mb_substr($this->tokens[$pointer]['value'], 0, $chars * -1);
+		if ($type) {
+			$this->tokens[$pointer]['type'] = $type;
+		}
 	}
 }
