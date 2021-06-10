@@ -41,8 +41,17 @@ class tokenise {
 	 * @param string $value The string to be tokenised
 	 */
 	public function __construct(array $tokens, string $value) {
+
+		// compile pattern
 		$this->pattern = '/\G('.\implode(')|(', $tokens).')/u';
-		$this->keys = \array_keys($tokens);
+
+		// make the keys a 1 based array
+		$keys = \array_keys($tokens);
+		array_unshift($keys, 'hexydec');
+		unset($keys[0]);
+		$this->keys = $keys;
+
+		// store value
 		$this->value = $value;
 	}
 
@@ -54,10 +63,7 @@ class tokenise {
 	 */
 	public function prev(int $decrement = 1) : ?array {
 		$this->pointer -= $decrement;
-		if (isset($this->tokens[$this->pointer])) {
-			return $this->tokens[$this->pointer];
-		}
-		return null;
+		return $this->tokens[$this->pointer] ?? null;
 	}
 
 	/**
@@ -94,7 +100,6 @@ class tokenise {
 			// go through tokens and find which one matched
 			} else {
 				foreach ($this->keys AS $i => $key) {
-					$i++; // 1 based array
 					if ($match[$i] !== null) {
 
 						// save the token
