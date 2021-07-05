@@ -47,7 +47,7 @@ class tokenise {
 
 		// make the keys a 1 based array
 		$keys = \array_keys($tokens);
-		array_unshift($keys, 'hexydec');
+		\array_unshift($keys, 'hexydec');
 		unset($keys[0]);
 		$this->keys = $keys;
 
@@ -130,7 +130,7 @@ class tokenise {
 	public function rewind(int $chars, ?string $type = null) : void {
 		$this->pos -= $chars;
 		$pointer = $this->pointer;
-		$this->tokens[$pointer]['value'] = mb_substr($this->tokens[$pointer]['value'], 0, $chars * -1);
+		$this->tokens[$pointer]['value'] = \mb_substr($this->tokens[$pointer]['value'], 0, $chars * -1);
 		if ($type) {
 			$this->tokens[$pointer]['type'] = $type;
 		}
