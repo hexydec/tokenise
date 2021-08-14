@@ -17,7 +17,7 @@ Returns an array containing two keys: `type` which contains the key of the patte
 
 #### `$decrement`
 
-An integer specifying how many tokens back to rewind the pointer. Note that only 1 previous token is remembered unless `$delete` was set to `false` on previous calls to `next()`.
+An integer specifying how many tokens back to rewind the pointer. Note that only two previous tokens are remembered unless `$delete` was set to `false` on previous calls to `next()`.
 
 ## `current()`
 
@@ -36,3 +36,15 @@ To capture the next token with a custom regular expression, specify it here.
 #### `$delete`
 
 Denotes whether to delete previous tokens, set to `false` to look ahead and retain the ability to look back.
+
+## `rewind(int $chars, ?string $type = null)`
+
+Rewind the pointer and rewrite the last token, so you can start parsing again from a previous position. Note the last token will also be rewritten from where it started to the new position.
+
+#### `$chars`
+
+An integer specifying the number of characters to move the pointer back by.
+
+#### `$type`
+
+To replace the type of the last token, specify the new type here, otherwise `null`.
