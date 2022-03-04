@@ -7,32 +7,32 @@ class tokenise {
 	/**
 	 * @var string $value Stores the subject value to be tokenised
 	 */
-	protected $value = '';
+	protected string $value = '';
 
 	/**
 	 * @var string $pattern Stores the regexp pattern to tokenise the string with
 	 */
-	protected $pattern = '';
+	protected string $pattern = '';
 
 	/**
 	 * @var array $keys An array to map the regexp output with the token type
 	 */
-	protected $keys = [];
+	protected array $keys = [];
 
 	/**
 	 * @var int $pos The position within $value to retrieve the next token from
 	 */
-	protected $pos = 0;
+	protected int $pos = 0;
 
 	/**
 	 * @var int $pointer The current token position
 	 */
-	protected $pointer = -1;
+	protected int $pointer = -1;
 
 	/**
 	 * @var array $tokens An array of captured tokens
 	 */
-	protected $tokens = [];
+	protected array $tokens = [];
 
 	/**
 	 * Constructs a new tokeniser object

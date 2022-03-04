@@ -1,7 +1,6 @@
 {
     "name": "hexydec/tokenise",
     "description": "A program for performing lexical analysis, written in PHP",
-    "version": "0.4.2",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -11,9 +10,9 @@
 			"homepage": "https://github.com/hexydec"
         }
     ],
-    "minimum-stability": "beta",
+    "minimum-stability": "stable",
     "require": {
-        "php": ">=7.3"
+        "php": ">=7.4"
     },
 	"autoload": {
 		"classmap": ["src/"]
