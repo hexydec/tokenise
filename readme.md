@@ -3,7 +3,7 @@
 A program for performing lexical analysis, written in PHP. Designed to supply tokens to a parser in order to analyse the syntax of programming languages.
 
 ![Licence](https://img.shields.io/badge/Licence-MIT-lightgrey.svg)
-![Status: Beta](https://img.shields.io/badge/Status-Beta-Yellow.svg)
+![Status: Stable](https://img.shields.io/badge/Status-Stable-Green.svg)
 [![Tests Status](https://github.com/hexydec/tokenise/actions/workflows/tests.yml/badge.svg)](https://github.com/hexydec/tokenise/actions/workflows/tests.yml)
 [![Code Coverage](https://codecov.io/gh/hexydec/tokenise/branch/master/graph/badge.svg)](https://app.codecov.io/gh/hexydec/tokenise)
 
