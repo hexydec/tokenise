@@ -1,8 +1,7 @@
 <?php
 declare(strict_types = 1);
-spl_autoload_register(function (string $class) : bool {
+\spl_autoload_register(function (string $class) : void {
 	if ($class === 'hexydec\\tokens\\tokenise') {
-		return (bool) require(__DIR__.'/tokenise.php');
+		require(__DIR__.'/tokenise.php');
 	}
-	return false;
 });
