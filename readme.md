@@ -33,6 +33,10 @@ while (($token = $obj->next()) !== null) {
 
 For more detailed usage documentation, [read the API document](docs/api.md).
 
+## Support
+
+Tokenise supports PHP version 8.0+.
+
 ## Contributing
 
 If you find an issue with tokenise, please create an issue in the tracker.
