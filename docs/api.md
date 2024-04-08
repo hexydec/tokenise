@@ -27,7 +27,7 @@ Returns an array containing two keys: `type` which contains the key of the patte
 
 ## `next(string $pattern = null, bool $delete = true)`
 
-Retrieves the next token:
+Retrieves the next token.
 
 #### `$pattern`
 

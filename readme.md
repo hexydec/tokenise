@@ -13,9 +13,9 @@ Using an array of regular expressions, tokens are extracted from the input code 
 
 Currently used in my other projects:
 
-- [HTMLdoc: PHP HTML Document Parser and Minifier](http://githubcom/hexydec/htmldoc)
-- [CSSdoc: PHP CSS Document Parser and Minifier](http://githubcom/hexydec/cssdoc)
-- [JSlite: PHP Javascript Minifier](http://githubcom/hexydec/jslite)
+- [HTMLdoc: PHP HTML Document Parser and Minifier](http://github.com/hexydec/htmldoc)
+- [CSSdoc: PHP CSS Document Parser and Minifier](http://github.com/hexydec/cssdoc)
+- [JSlite: PHP Javascript Minifier](http://github.com/hexydec/jslite)
 
 ## Usage
 
