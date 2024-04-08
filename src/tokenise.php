@@ -84,17 +84,18 @@ class tokenise {
 	 */
 	public function next(string $pattern = null, bool $delete = true) : ?array {
 		$pointer = $this->pointer + 1;
+		$tokens = $this->tokens;
 
 		// get cached token
-		if (isset($this->tokens[$pointer])) {
-			return $this->tokens[++$this->pointer];
+		if (isset($tokens[$pointer])) {
+			return $tokens[++$this->pointer];
 
 		// extract next token
 		} elseif (\preg_match($pattern ?? $this->pattern, $this->value, $match, PREG_UNMATCHED_AS_NULL, $this->pos)) {
 			$this->pos += \strlen($match[0]);
 
 			// custom pattern
-			if ($pattern) {
+			if ($pattern !== null) {
 				return $match;
 
 			// go through tokens and find which one matched
