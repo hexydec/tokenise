@@ -35,7 +35,7 @@ For more detailed usage documentation, [read the API document](docs/api.md).
 
 ## Support
 
-Tokenise supports PHP version 8.0+.
+Tokenise supports PHP version 8.1+.
 
 ## Contributing
 
