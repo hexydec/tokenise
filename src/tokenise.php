@@ -15,7 +15,7 @@ class tokenise {
 	protected string $pattern = '';
 
 	/**
-	 * @var array $keys An array to map the regexp output with the token type
+	 * @var array<int,string> $keys An array to map the regexp output with the token type
 	 */
 	protected array $keys = [];
 
@@ -30,14 +30,14 @@ class tokenise {
 	protected int $pointer = -1;
 
 	/**
-	 * @var array $tokens An array of captured tokens
+	 * @var array<int,array<string,string>> $tokens An array of captured tokens
 	 */
 	protected array $tokens = [];
 
 	/**
 	 * Constructs a new tokeniser object
 	 *
-	 * @param array $tokens An associative array of token patterns, tokens will be returned with the key specified
+	 * @param array<string,string> $tokens An associative array of token patterns, tokens will be returned with the key specified
 	 * @param string $value The string to be tokenised
 	 */
 	public function __construct(array $tokens, string $value) {
@@ -59,7 +59,7 @@ class tokenise {
 	 * Retrieves the previous token (Note you can only retrieve the immediately preceeding token, you can't keep going backwards as the previous previous token is deleted when the next token is consumed)
 	 *
 	 * @param int $decrement The number of positions to move the pointer back
-	 * @return array The previous token or null if the token no longer exists
+	 * @return ?array<string,string> The previous token or null if the token no longer exists
 	 */
 	public function prev(int $decrement = 1) : ?array {
 		$this->pointer -= $decrement;
@@ -69,7 +69,7 @@ class tokenise {
 	/**
 	 * Retrieves the current token
 	 *
-	 * @return array The currnet token or null if there is no token
+	 * @return ?array<string,string> The currnet token or null if there is no token
 	 */
 	public function current() : ?array {
 		return $this->tokens[$this->pointer] ?? null;
@@ -80,7 +80,7 @@ class tokenise {
 	 *
 	 * @param string $pattern A custom pattern to get the next token, if set will be used in place of the configured token
 	 * @param bool $delete Denotes whether to delete previous tokens to save memory
-	 * @return array The next token or null if there are no more tokens to retrieve
+	 * @return ?array<string|int,?string> The next token or null if there are no more tokens to retrieve
 	 */
 	public function next(string $pattern = null, bool $delete = true) : ?array {
 		$pointer = $this->pointer + 1;
@@ -92,7 +92,7 @@ class tokenise {
 
 		// extract next token
 		} elseif (\preg_match($pattern ?? $this->pattern, $this->value, $match, PREG_UNMATCHED_AS_NULL, $this->pos)) {
-			$this->pos += \strlen($match[0]);
+			$this->pos += \strlen($match[0] ?? '');
 
 			// custom pattern
 			if ($pattern !== null) {
