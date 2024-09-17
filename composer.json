@@ -14,7 +14,7 @@
 	"keywords": ["tokeniser", "tokenizer", "tokenisation", "tokenization", "parser", "lexical", "lexing"],
     "minimum-stability": "stable",
     "require": {
-        "php": ">=8.0"
+        "php": ">=8.1"
     },
 	"autoload": {
 		"classmap": ["src/"]
