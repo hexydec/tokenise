@@ -69,7 +69,7 @@ class tokenise {
 	/**
 	 * Retrieves the current token
 	 *
-	 * @return ?array<string,string> The currnet token or null if there is no token
+	 * @return ?array<string,string> The current token or null if there is no token
 	 */
 	public function current() : ?array {
 		return $this->tokens[$this->pointer] ?? null;
