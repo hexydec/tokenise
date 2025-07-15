@@ -82,7 +82,7 @@ class tokenise {
 	 * @param bool $delete Denotes whether to delete previous tokens to save memory
 	 * @return ?array<string|int,?string> The next token or null if there are no more tokens to retrieve
 	 */
-	public function next(string $pattern = null, bool $delete = true) : ?array {
+	public function next(?string $pattern = null, bool $delete = true) : ?array {
 		$pointer = $this->pointer + 1;
 		$tokens = $this->tokens;
 
