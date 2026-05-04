@@ -17,8 +17,11 @@ jobs:
 
       - uses: php-actions/composer@v5
         with:
-            php_version: 8.1
+            php_version: 8.3
             php_extensions: mbstring xdebug
+
+      - name: PHPStan Analysis
+        run: ./vendor/bin/phpstan analyse --memory-limit=512M
 
       - name: PHPUnit Tests
         run: ./vendor/bin/phpunit

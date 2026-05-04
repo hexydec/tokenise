@@ -59,6 +59,7 @@ class tokenise {
 	 * Retrieves the previous token (Note you can only retrieve the immediately preceeding token, you can't keep going backwards as the previous previous token is deleted when the next token is consumed)
 	 *
 	 * @param int $decrement The number of positions to move the pointer back
+	 * @phpstan-impure
 	 * @return ?array<string,string> The previous token or null if the token no longer exists
 	 */
 	public function prev(int $decrement = 1) : ?array {
@@ -78,11 +79,12 @@ class tokenise {
 	/**
 	 * Retrieves the next token
 	 *
-	 * @param string $pattern A custom pattern to get the next token, if set will be used in place of the configured token
+	 * @param ?string $pattern A custom pattern to get the next token, if set will be used in place of the configured token
 	 * @param bool $delete Denotes whether to delete previous tokens to save memory
+	 * @phpstan-impure
 	 * @return ?array<string|int,?string> The next token or null if there are no more tokens to retrieve
 	 */
-	public function next(string $pattern = null, bool $delete = true) : ?array {
+	public function next(?string $pattern = null, bool $delete = true) : ?array {
 		$pointer = $this->pointer + 1;
 		$tokens = $this->tokens;
 
