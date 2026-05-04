@@ -80,6 +80,7 @@ class tokenise {
 	 *
 	 * @param string $pattern A custom pattern to get the next token, if set will be used in place of the configured token
 	 * @param bool $delete Denotes whether to delete previous tokens to save memory
+	 * @phpstan-impure
 	 * @return ?array<string|int,?string> The next token or null if there are no more tokens to retrieve
 	 */
 	public function next(?string $pattern = null, bool $delete = true) : ?array {
